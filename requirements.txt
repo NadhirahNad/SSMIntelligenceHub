@@ -4,3 +4,6 @@ pandas
 sentence-transformers
 transformers
 torch
+neo4j
+python-dotenv
+huggingface-hub
