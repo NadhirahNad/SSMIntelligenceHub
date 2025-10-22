@@ -7,13 +7,8 @@ import numpy as np
 import re
 from dotenv import load_dotenv
 import os
-
-# Load variables from .env
 load_dotenv()
-
 HF_TOKEN = os.getenv("HF_TOKEN")
-
-print("Loaded HF token:", HF_TOKEN[:10] + "...")
 
 
 # === Neo4j Connection ===

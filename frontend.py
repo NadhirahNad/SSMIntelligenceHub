@@ -3,14 +3,8 @@ from backend import ask_ssm_bot
 from huggingface_hub import login
 from dotenv import load_dotenv
 import os
-
-# Load variables from .env
 load_dotenv()
-
 HF_TOKEN = os.getenv("HF_TOKEN")
-
-print("Loaded HF token:", HF_TOKEN[:10] + "...")  # Optional, for checking
-
 
 
 st.set_page_config(page_title="SSM Intelligence Hub", layout="wide")
