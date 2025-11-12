@@ -4,7 +4,8 @@ import numpy as np
 import faiss
 import os
 
-model = SentenceTransformer('distilbert-base-nli-mean-tokens')
+# Use a lightweight embedding model
+model = SentenceTransformer('all-MiniLM-L6-v2')  # 22 MB
 
 def load_act_data(act_name):
     act_files = {
