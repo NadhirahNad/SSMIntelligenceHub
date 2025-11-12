@@ -16,8 +16,8 @@ app.add_middleware(
 )
 
 # Load small language model
-tokenizer = T5Tokenizer.from_pretrained("t5-base")
-model = T5ForConditionalGeneration.from_pretrained("t5-base")
+tokenizer = T5Tokenizer.from_pretrained("t5-small")
+model = T5ForConditionalGeneration.from_pretrained("t5-small")
 
 @app.get("/")
 def root():
