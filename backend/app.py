@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from retriever import retrieve_context
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 import torch
+import os
 
 app = FastAPI()
 
@@ -39,3 +40,8 @@ async def ask_question(request: Request):
     answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
     return {"answer": answer}
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # Use PORT env var if exists, else 8000
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
