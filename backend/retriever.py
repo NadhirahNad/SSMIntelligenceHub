@@ -4,8 +4,8 @@ import numpy as np
 import faiss
 import os
 
-# Use a lightweight embedding model
-model = SentenceTransformer('all-MiniLM-L6-v2')  # 22 MB
+# Lightweight embedding model
+model = SentenceTransformer('all-MiniLM-L6-v2')  # ~22MB
 
 def load_act_data(act_name):
     act_files = {
@@ -24,8 +24,13 @@ def retrieve_context(query, act_name):
     if not os.path.exists(index_path):
         raise FileNotFoundError(f"No FAISS index found for {act_name}")
 
+    # Load FAISS index
     index = faiss.read_index(index_path)
+
+    # Encode query
     query_vec = model.encode([query])
     D, I = index.search(np.array(query_vec), k=3)
+
+    # Combine top 3 chunks
     context = " ".join(df.iloc[i]["Content"] for i in I[0])
     return context
